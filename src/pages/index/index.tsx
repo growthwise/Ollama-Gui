@@ -29,6 +29,7 @@ import { IntroCard } from './parts/IntroCard';
 import { Badge } from '@/components/ui/badge';
 import { ConversationBlock } from './parts/ConversationBlock';
 import { UpdateModelsAvailability, checkIsRunningUpdate } from './helper';
+import { ModelFileCreation } from './parts/ModelFileCreation';
 
 const HomePage: React.FC = () => {
   const { toast } = useToast();
@@ -41,6 +42,7 @@ const HomePage: React.FC = () => {
   const conversations = useSimple(core.conversations);
   const currentConversation = useSimple(core.current_conversation);
 
+  const [showModelCreation, setShowModelCreation] = useState(false);
   const [showIntroCard, setShowIntroCard] = useState(false);
   const [showChatClearDialog, setShowChatClearDialog] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -190,6 +192,16 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="dark:bg-black h-full w-full flex flex-col justify-center items-center">
+      {showModelCreation && (
+        <ModelFileCreation
+          onClose={(e) => {
+            if (e) {
+              console.log('Its confirmed');
+            }
+            setShowModelCreation(false);
+          }}
+        />
+      )}
       {showIntroCard && (
         <IntroCard
           onClose={(e) => {
@@ -209,7 +221,7 @@ const HomePage: React.FC = () => {
         />
       )}
 
-      <div className="flex flex-col w-full pb-[5px] mt-2">
+      <div className="flex flex-col w-full pb-[5px] mt-2 items-center">
         <div className="flex justify-center">
           {ollamaConnected && (
             <Badge
@@ -232,6 +244,15 @@ const HomePage: React.FC = () => {
               )}
             </p>
           </div>
+
+          <Button
+            className="h-5 ml-1"
+            size="sm"
+            variant="secondary"
+            onClick={() => setShowModelCreation(true)}
+          >
+            Create Modelfile
+          </Button>
         </div>
         <div className="flex flex-row ] w-full p-4 pt-2">
           <Input
