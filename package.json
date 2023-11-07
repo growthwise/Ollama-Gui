@@ -1,0 +1,9 @@
+{
+	"name": "ollama",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"mobile": "pnpm -F mobile",
+		"web": "pnpm -F web"
+	}
+}
