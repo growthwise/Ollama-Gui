@@ -29,7 +29,7 @@ Welcome to my Ollama Chat, this is an interface for the Official ollama CLI to m
 
 <br />
 
-1.  Clone the repo `git clone git@github.com:ollama-interface/Ollama-Gui.git`
+1.  Clone the repo `git clone https://github.com/ollama-interface/Ollama-Gui.git
 2.  `pnpm i`
 3.  `pnpm build:app:silicon` (:silicon or :intell or :universal) depending on your machine
 4.  Go to `/src-tauri/target/release/bundle/dmg/*.dmg` and install the program with the .dmg file.
